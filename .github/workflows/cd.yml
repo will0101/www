@@ -18,6 +18,13 @@ jobs:
 
     - uses: actions/checkout@v2
 
+    - name: Set Node.js 16
+      uses: actions/setup-node@v1
+      with:
+        version: 16.x
+    - run: npm ci
+    - run: npm run build
+
     ## means s3 sync will only sync things we need sync’d
     - uses: chetan/git-restore-mtime-action@v1
 
@@ -30,7 +37,7 @@ jobs:
     # cache-control of 10 mins because we *need* to be able to update
     # this and have people see the results can be fixed well with a static site builder
     - run: |
-        aws s3 sync . s3://www.tea.xyz \
+        aws s3 sync public s3://www.tea.xyz \
           --metadata-directive REPLACE \
           --cache-control max-age=600 \
           --exclude '.git/*' --exclude '.github/*' \

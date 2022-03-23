@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --trip-teal: 13,115,130;
   --trip-mint: 125, 201, 191;
@@ -20,82 +24,66 @@
   --teal-highlight: #4c8995;
 }
 * {
-  box-sizing: border-box;
+  @apply box-border;
 }
 html, body {
-  padding: 0;
-  margin: 0;
-}
-
-body, html {
+  @apply p-0 m-0 text-white text-base;
   background-color: var(--teal);
   font-family: Montserrat, sans-serif;
-  color: white;
-  font-size: 16px;
 }
 b {
-  font-weight: 900;
+  @apply font-black;
 }
 h1, h2, h3, h4, h5 {
+  @apply lowercase;
   font-family: 'Playfair Display', serif;
-  text-transform: lowercase;
   color: var(--teal);
 }
 h1 {
-  font-size: 3rem;
+  @apply text-5xl;
 }
 h2 {
-  font-size: 2rem;
+  @apply text-3xl;
 }
 h3 {
-  font-size: 1.25rem;
+  @apply text-xl;
 }
-h1 .alt, h2 .alt, h3 .alt {
+h1 .alt, h2 .alt {
   color: var(--pale-teal);
 }
 .tea {
+  @apply font-bold;
   font-family: 'Playfair Display', serif;
-  font-weight: bold;
 }
 .logo {
-  width: auto;
-  height: 2.2rem;
+  @apply w-auto h-12;
 }
 #masthead {
-  background: white;
+  @apply bg-white flex items-center;
   color: var(--light-charcoal);
-  padding: 1.8rem 3rem;
+  padding: 2.45rem 3rem;
   padding-left: var(--main-padding);
-  display: flex;
-  align-items: center;
 }
 #masthead nav {
-  margin-left: auto;
+  @apply ml-auto;
 }
 #masthead nav ol {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  font-weight: bold;
+  @apply list-none m-0 p-0 font-bold;
 }
 #masthead nav ol li {
-  display: inline-block;
+  @apply inline-block;
   padding: 0 1rem;
 }
 
-#masthead img {
-  transform: translateY(-13%)
-}
-
 .content {
-  padding: 2rem;
+  @apply p-8;
 }
 .content1 {
   background: var(--light-grey);
   color: var(--charcoal);
 }
 .content2 {
-  background: white;
+  @apply bg-white;
   color: var(--light-charcoal);
 }
 .content3 {
@@ -103,7 +91,7 @@ h1 .alt, h2 .alt, h3 .alt {
   color: inherit;
 }
 .content3 h1, .content3 h2, .content3 h3, .content3 h4, .content3 h5 {
-  color: white;
+  @apply text-white;
 }
 .content {
   padding: 1rem max(calc((100vw - 60rem) / 2), 1rem);
@@ -114,10 +102,10 @@ p {
 }
 
 .content > *:first-child {
-  margin-top: 3rem;
+  @apply mt-20;
 }
 .content > *:last-child {
-  margin-bottom: 3rem;
+  @apply mb-20;
 }
 
 b, strong {
@@ -125,20 +113,19 @@ b, strong {
 }
 
 strong {
-  font-weight: 500;
+  @apply font-medium;
 }
 
 .content3 b, .content3 strong {
-  color: white;
+  @apply text-white;
 }
 
 b {
-  position: relative;
-  z-index: 0;
+  @apply relative z-0;
 }
 b::before {
+  @apply absolute;
   content: "";
-  position: absolute;
   inset: 0;
   top: 55%;
   left: -0.2rem;
@@ -152,45 +139,39 @@ b::before {
 }
 
 .content3 {
-  position: relative;
+  @apply relative;
 }
 .content3 h2 {
-  position: relative;
-  z-index: 0;
+  @apply relative z-0;
 }
 
 .content3 p {
-  z-index: 0;
+  @apply z-0;
 }
 
 .content3 .flair {
+  @apply absolute h-56 w-32;
   content: "";
   background: var(--teal-highlight);
-  position: absolute;
   inset: 0;
   left: var(--main-padding);
-  height: 14rem;
-  width: 8rem;
   z-index: -1;
 }
 
 code.example {
+  @apply text-white p-4 text-2xl inline-block;
   background: var(--teal);
   border: 1px dashed var(--light-grey);
-  color: white;
-  padding: 1rem;
-  font-size: 1.5rem;
-  display: inline-block;
 }
 code.example.small {
-  font-size: 1.3rem;
+  @apply text-xl;
 }
 pre, code {
   font-family: 'Courier New', monospace;
 }
 a {
+  @apply no-underline;
   color: var(--mint);
-  text-decoration: none;
 }
 a:hover, a:visited:hover {
   color: var(--pale-mint);
@@ -202,84 +183,64 @@ a:active, a:hover:active {
   color: var(--teal);
 }
 .content3 a {
-  color: #54baab;
+  @apply text-teal-500;
 }
 .content3 a:hover, .content3 a:visited:hover {
-  color: #7dc9bf;
+  @apply text-teal-300;
 }
 .content3 a:active, .content3 a:hover:active {
-  color: #45edd6;
+  @apply text-teal-400;
 }
 a.button, input[type=submit] {
-  line-height: 3rem;
-  border-radius: 1.5rem;
+  @apply leading-10 rounded-lg bg-white inline-block font-bold uppercase;
   padding: 0 5rem;
-  background: white;
   color: var(--charcoal);
-  display: inline-block;
-  font-weight: bold;
   letter-spacing: 0.125rem;
-  text-transform: uppercase;
   border: 0;
 }
 a.button:hover, input[type=submit]:hover, a.button:visited:hover, input[type=submit]:visited:hover {
-  background: #7df2de;
+  @apply bg-teal-300;
   color: var(--charcoal);
 }
 a.button:active, input[type=submit]:active, a.button:visited:active, input[type=submit]:visited:active {
-  background: #45edd6;
+  @apply bg-teal-400;
 }
-.content2 a.button, input[type=submit] {
-  background: #54baab;
-  color: white;
+.content2 a.button {
+  @apply bg-teal-500 text-white;
 }
 a.button:hover, a.button:visited:hover {
-  background: #7dc9bf;
-  color: white;
+  @apply bg-teal-300 text-white;
 }
 a.button:active, a.button:visited:active {
-  background: #addbd6;
-  color: white;
+  @apply bg-gray-400 text-white;
 }
 ul.linktree {
-  list-style-type: none;
-  margin: 0;
-  margin-left: -1.2rem;
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  padding: 0;
-  display: table;
+  @apply list-none m-0 -ml-5 mt-8 mb-16 p-0 table flex-col;
   border-collapse: separate;
   border-spacing: 1rem;
 }
 ul.linktree li {
-  display: table-row;
+  @apply table-row text-center;
 }
 ul.linktree li a {
-  display: table-cell;
+  @apply table-cell;
 }
-.linktree .button {
-  text-align: center;
-}
-
 .twocol {
-  display: grid;
+  @apply grid gap-24;
   grid-template-columns: repeat(auto-fill, calc(50% - 3rem));
-  gap: 6rem;
 }
 img.constrained {
-  max-width: 100%;
-  max-height: 100%;
+  @apply max-w-full max-h-full;
 }
 
 .genuine-innovation .twocol > div:first-child {
   padding: 2rem 0 3rem 0;
 }
 .genuine-innovation .twocol:first-child {
-  margin-bottom: 10rem;
+  @apply mb-40;
 }
 .genuine-innovation .twocol:nth-child(2) {
-  margin-bottom: 10rem;
+  @apply mb-40;
 }
 
 .hero p {
@@ -287,29 +248,26 @@ img.constrained {
 }
 
 input[type=email] {
+  @apply m-0 leading-10 rounded-lg mr-4;
   border: 0;
   font-family: inherit;
   font-size: 100%;
   padding: 0 1.5em;
-  margin: 0;
-  line-height: 3rem;
-  border-radius: 1.5rem;
   width: 20em;
-  margin-right: 1rem;
   transform: translateY(-1px) translateX(-3px); /* or not aligned with submit button */
 }
 
 input[type=submit] {
+  @apply m-0;
   font-size: 100%;
   padding: 0 1.5rem;
-  margin: 0;
 }
 
 .content2 input[type=email] {
+  @apply mr-0;
   background-color: var(--pale-mint);
   color: var(--teal);
   width: 14em;
-  margin-right: 0;
 }
 
 .content2 input[type=email]::placeholder {
@@ -317,9 +275,9 @@ input[type=submit] {
 }
 
 .aside {
+  @apply text-left;
   font-variant: small-caps;
   opacity: 0.5;
-  text-align: left;
 }
 
 .left-a-bit {
@@ -330,5 +288,5 @@ input[type=submit] {
 }
 
 .twocol.left-a-bit, .twocol.right-a-bit {
-  gap: 3rem;
+  @apply gap-12;
 }
