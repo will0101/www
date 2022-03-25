@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    paths:
+    - '**/*.md'
 
 concurrency:
   group: deploy
